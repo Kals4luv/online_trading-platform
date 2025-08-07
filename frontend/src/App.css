@@ -1,0 +1,79 @@
+.dashboard {
+  font-family: Arial, sans-serif;
+  background: #181a20;
+  color: #fff;
+  min-height: 100vh;
+}
+.dashboard-header {
+  background: #22242c;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+.dashboard-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.dashboard-prices, .dashboard-chart, .dashboard-orderbook, .dashboard-trades, .dashboard-buy-sell, .dashboard-portfolio {
+  background: #22242c;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.dashboard-prices {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.dashboard-chart {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+.dashboard-orderbook {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.dashboard-trades {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.dashboard-buy-sell {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+.dashboard-portfolio {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+}
+.chart-placeholder {
+  background: #181a20;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  border-radius: 4px;
+}
+.orderbook {
+  display: flex;
+  justify-content: space-between;
+}
+.orderbook ul {
+  list-style: none;
+  padding: 0;
+}
+button {
+  background: #f0b90b;
+  color: #181a20;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover {
+  background: #ffd700;
+}
