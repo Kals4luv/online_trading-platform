@@ -3,13 +3,16 @@ import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [messages, setMessages] = useState([]);
+  const [prices, setPrices] = useState({ bitcoin: { usd: 0 }, ethereum: { usd: 0 }, solana: { usd: 0 } });
   const ws = useRef(null);
 
   useEffect(() => {
     ws.current = new WebSocket("ws://localhost:8000/ws");
     ws.current.onmessage = (event) => {
-      setMessages((prev) => [...prev, event.data]);
+      try {
+        const data = JSON.parse(event.data);
+        setPrices(data);
+      } catch (e) {}
     };
     return () => ws.current.close();
   }, []);
@@ -28,11 +31,10 @@ function App() {
       <div className="dashboard-main">
         <section className="dashboard-prices">
           <h2>Live Crypto Prices</h2>
-          {/* Example prices, replace with real data */}
           <ul>
-            <li>BTC/USD: $29,000</li>
-            <li>ETH/USD: $1,800</li>
-            <li>SOL/USD: $25</li>
+            <li>BTC/USD: ${prices.bitcoin.usd}</li>
+            <li>ETH/USD: ${prices.ethereum.usd}</li>
+            <li>SOL/USD: ${prices.solana.usd}</li>
           </ul>
         </section>
         <section className="dashboard-chart">
